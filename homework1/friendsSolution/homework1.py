@@ -1,10 +1,4 @@
-"""
-Author: Erik
-Created on: Mon Apr 25 11:33:22 2016
-Last modified on: 03/05/2016 by Erik
 
-Python version 3.5
-"""
 import matplotlib.pyplot as plt 
 import math as m
 import numpy as np
