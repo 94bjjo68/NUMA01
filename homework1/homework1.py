@@ -38,14 +38,14 @@ while (abs(I_h[-1]-I) > tollerence): # breaks when approximation is good enough 
     i+=1
 
 ##--------------------- TASK 3 ---------------------------------
-plt.loglog(H ,abs(I_h-I), basex=10, basey=10) #just plotting whaever
-plt.grid(which='both')
-plt.show()
+#plt.loglog(H ,abs(I_h-I), basex=10, basey=10) #just plotting whaever
+#plt.grid(which='both')
+#plt.show()
 
 ## --------------- TASK 4-7 CONFIG -----------------------------
 x = np.asarray([0.0, 0.5, 1.0, 1.5, 2.0, 2.5])
 y = np.asarray([-2.0,0.5, -2.0, 1.0, -0.5, 1.0])
-xs = np.asarray(linspace(0, 3, len(x)))
+xs = np.asarray(linspace(0, 3, 100))
 
 ##--------------------- TASK 4 ---------------------------------
 def MatrixConstruct(V):
@@ -59,16 +59,16 @@ def MatrixConstruct(V):
 ##--------------------- TASK 5 ----------------------------------
 def interpoly(X, Y):
     V = MatrixConstruct(X)
-    return linalg.solve(V, Y)
+    return linalg.solve(V, Y)[::-1]
 
 ##--------------------- TASK 6 ----------------------------------
 def polyval(c, z):
     summ = 0
     for i in range(len(c)):
-        summ =summ + c[i]+z**(len(c)-i)
+        summ =summ + c[i]*z**(i)
     return summ
-
+print (polyval([1, 2, 3], 2))
 ##-------------------- TASK 7 ----------------------------------
 plt.plot(xs, polyval(interpoly(x, y), xs), '--k')
-plt.plot(x, polyval( interpoly(x, y), x), '*' )
+plt.plot(x, y, '*' )
 plt.show()
