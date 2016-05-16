@@ -1,0 +1,11 @@
+
+
+
+
+
+class Interval:
+    def __init__(self, A, B):
+        self.l = [A, B]
+    
+
+print (Interval(1, 2))
