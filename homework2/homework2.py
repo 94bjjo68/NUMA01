@@ -1,11 +1,17 @@
 
-
-
-
-
 class Interval:
     def __init__(self, A, B):
-        self.l = [A, B]
-        print (self.l)
+        self.a = A 
+	other.b = B 
+def __add__(self ,other):
+	return Interval( self.a + other.b) 
 
-print (Interval(1, 2))
+I1 = Interval(1, 2)
+I2 = Interval(2, 4)
+
+print (I1+I2)
+print (I1-I2)
+print (I1*I2)
+print (I1/I2)
+		
+
