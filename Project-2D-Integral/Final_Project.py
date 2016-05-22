@@ -50,7 +50,7 @@ class Mesh(object):
             gamma = arccos((abs(dot(b, a)))/(sqrt(dot(a, a))*sqrt(dot(b,b))))
             minangle = min(alpha, beta, gamma)
             
-            if minangle >= pi/10:
+            if minangle >= pi/2000000:
                 
                 J.append(abs((xb[i]-xa[i])*(yc[i]-ya[i])-(yb[i]-ya[i])*(xc[i]-xa[i])))
             ####### Raise error: too thin triangles ###################################
@@ -206,7 +206,36 @@ def xmlconv(name):
     nodes[:, 0] = V0
     nodes[:, 1] = V1
     nodes[:, 2] = V2
+    
+    nodes += 1
 
     return coords, nodes
     
 xml = xmlconv('dolfin_coarse.xml')
+
+m = Mesh(xml[0], xml[1])
+
+print(m)
+
+J = m.__Jacobian__()
+print('J =', J)
+
+f = lambda x,y: 1
+
+   
+I = m.__Integral__(f)        
+print('The integral of the function over the given area is', I) 
+
+A = m.__Area__()
+print('The total area of the domain is', A)
+
+print("The difference between the integral and the area is:",abs(m.__Integral__(f)-m.__Area__()))
+
+plt.figure()
+plt.gca().set_aspect('equal')  
+m.__plotting__()
+plt.title('Triplot of our surface')
+plt.xlabel('x')
+plt.ylabel('y')
+
+plt.show()
