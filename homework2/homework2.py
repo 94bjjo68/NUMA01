@@ -34,14 +34,16 @@ class Interval:
 			return 'Please make sure values is of sort int and x !=0'
 		else:
 			return nterval(self.a / other.b, self.b / other.a)
+	def __pow__(self, other):
+		return Interval(self.a**other, self.b**other)
 
 
-I1 = Interval(1, 2)
-I2 = Interval(1, 4)
-print(I1 + I2) 
-print(I2+ I1)
-print(I2 + 1.0)
-print(1.0 + I2)
+xl = linspace(0.,1,1000)
+xu = linspace(0.,1,1000) + 0.5
+
+
+
+
 	
 
 print(Interval(1))
