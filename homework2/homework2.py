@@ -1,5 +1,5 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 class Interval:
 	def __init__(self, *args):
@@ -38,12 +38,18 @@ class Interval:
 		return Interval(self.a**other, self.b**other)
 
 
-xl = linspace(0.,1,1000)
-xu = linspace(0.,1,1000) + 0.5
+
+def func(X):
+	return (3*X**3)-(2*X**2)+(5*X)-1
+
+xl = np.linspace(0.,1,1000)
+xu = np.linspace(0.,1,1000) + 0.5
+
+plt.plot(xl, func(xl), c='r')
+plt.plot(xl, func(xu), c='b')
+plt.plot(xl, func(xu)-func(xl), c='black')
+plt.show()
 
 
 
 
-	
-
-print(Interval(1))
